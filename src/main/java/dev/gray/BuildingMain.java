@@ -12,8 +12,6 @@ public class BuildingMain {
     public static void main(String[] args) {
 
 
-
-
 //      CREATING JAVALIN APP TO RUN ON LOCALHOST:7000 AND DISPLAY WELCOME
         Javalin app = Javalin.create().start(7000);
         app.get("/", ctx -> ctx.result("Welcome to the Building Log"));
@@ -24,20 +22,18 @@ public class BuildingMain {
 
 
 //        TRYING OUT HANDLER GROUPS
-        app.routes(() -> path("/log", () -> {
-            get(buildingLogController::handleGetAllLogs);
-            post(buildingLogController::handleAddNewLog);
-            path(":id", () -> {
-                get(buildingLogController::handleFindLogByUserId);
-                delete(buildingLogController::handleDeleteLog);
-
-            path("employee", () ->{
-                post(employeeController::employeeLogin);
-
-
-                });
-            });
-        }));
+        app.routes(() ->
+                path("/log", () -> {
+                    get(buildingLogController::handleGetAllLogs);
+                    post(buildingLogController::handleAddNewLog);
+                    path(":id", () -> {
+                        get(buildingLogController::handleFindLogByUserId);
+                        delete(buildingLogController::handleDeleteLog);
+                    });
+                    path("employee", () -> {
+                        post(employeeController::employeeLogin);
+                    });
+                }));
 
     }
 }
