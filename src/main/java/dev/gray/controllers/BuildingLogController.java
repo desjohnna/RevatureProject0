@@ -8,14 +8,21 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 
-public class BuildingController {
+public class BuildingLogController {
 
     private final BuildingLogData data = new BuildingLogData();
 
-    public void handleGetAllLogs(@NotNull Context ctx) {
+    public BuildingLogController(){
+        super();
+    }
+
+    public void handleGetAllLogs(Context ctx) {
 //        Add logic if statement logic for Admin access only, throw exception 403 FORBIDDEN
         ctx.json(data.getMasterBuildingLog());
+
+
     }
+
 
     public void handleAddNewLog(@NotNull Context ctx) {
 

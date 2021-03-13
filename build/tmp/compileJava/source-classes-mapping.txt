@@ -1,16 +1,16 @@
 dev/gray/controllers/EmployeeController.java
  dev.gray.controllers.EmployeeController
-dev/gray/building_log_models/BuildingLog.java
- dev.gray.building_log_models.BuildingLog
 dev/gray/data/EmployeeData.java
  dev.gray.data.EmployeeData
-dev/gray/building_log_models/Admin.java
- dev.gray.building_log_models.Admin
+dev/gray/controllers/BuildingLogController.java
+ dev.gray.controllers.BuildingLogController
 dev/gray/building_log_models/Employee.java
  dev.gray.building_log_models.Employee
-dev/gray/controllers/BuildingController.java
- dev.gray.controllers.BuildingController
-dev/gray/data/BuildingLogData.java
- dev.gray.data.BuildingLogData
+dev/gray/building_log_models/BuildingLog.java
+ dev.gray.building_log_models.BuildingLog
 dev/gray/BuildingMain.java
  dev.gray.BuildingMain
+dev/gray/util/ConnectionUtility.java
+ dev.gray.util.ConnectionUtility
+dev/gray/data/BuildingLogData.java
+ dev.gray.data.BuildingLogData

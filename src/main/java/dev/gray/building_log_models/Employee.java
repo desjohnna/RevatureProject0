@@ -11,6 +11,7 @@ public class Employee implements Serializable {
     private String firstName;
     private String lastName;
     private Boolean admin;
+    private Boolean loggedIn;
 
     private Set<BuildingLog> buildingLogSet;
 
@@ -18,12 +19,13 @@ public class Employee implements Serializable {
         super();
     }
 
-    public Employee(Integer userId, String password, String firstName, String lastName, Boolean admin) {
+    public Employee(Integer userId, String password, String firstName, String lastName, Boolean admin, Boolean loggedIn) {
         this.userId = userId;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.admin = admin;
+        this.loggedIn = loggedIn;
     }
 
     public Integer getUserId() {
@@ -74,17 +76,25 @@ public class Employee implements Serializable {
         this.admin = admin;
     }
 
+    public Boolean getLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(Boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return userId.equals(employee.userId) && password.equals(employee.password) && firstName.equals(employee.firstName) && lastName.equals(employee.lastName) && admin.equals(employee.admin) && Objects.equals(buildingLogSet, employee.buildingLogSet);
+        return userId.equals(employee.userId) && password.equals(employee.password) && firstName.equals(employee.firstName) && lastName.equals(employee.lastName) && admin.equals(employee.admin) && loggedIn.equals(employee.loggedIn) && Objects.equals(buildingLogSet, employee.buildingLogSet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, password, firstName, lastName, admin, buildingLogSet);
+        return Objects.hash(userId, password, firstName, lastName, admin, loggedIn, buildingLogSet);
     }
 
     @Override
@@ -95,6 +105,7 @@ public class Employee implements Serializable {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", admin=" + admin +
+                ", loggedIn=" + loggedIn +
                 ", buildingLogSet=" + buildingLogSet +
                 '}';
     }

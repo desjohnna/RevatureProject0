@@ -8,7 +8,7 @@ public class BuildingLog implements Serializable {
 
     private Integer logEntryId;
     private Integer userId;
-    private String logDate;
+    private Integer logDate;
     private Integer logTime;
     private String firstName;
     private String lastName;
@@ -17,7 +17,7 @@ public class BuildingLog implements Serializable {
         super();
     }
 
-    public BuildingLog(Integer logEntryId, Integer userId, String logDate, Integer logTime, String firstName, String lastName) {
+    public BuildingLog(Integer logEntryId, Integer userId, Integer logDate, Integer logTime, String firstName, String lastName) {
         this.logEntryId = logEntryId;
         this.userId = userId;
         this.logDate = logDate;
@@ -42,11 +42,11 @@ public class BuildingLog implements Serializable {
         this.userId = userId;
     }
 
-    public String getLogDate() {
+    public Integer getLogDate() {
         return logDate;
     }
 
-    public void setLogDate(String logDate) {
+    public void setLogDate(Integer logDate) {
         this.logDate = logDate;
     }
 
