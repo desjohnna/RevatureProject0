@@ -13,6 +13,8 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
         return null;
     }
 
+
+//    WORKING
     @Override
     public List<BuildingLog> getMasterBuildingLog() {
 
@@ -25,8 +27,8 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
             Statement statement = connection.createStatement();
 
 //          Creating a ResultSet to hold all statements that come back from query
-            ResultSet resultSet = statement.executeQuery("select * from building_log");
-//            ResultSet resultSet = statement.executeQuery("select e.user_id,b.log_entry_id, b.log_date, b.log_time, b.first_name, b.last_name from employee join building_log b on b.user_id=e.user_id;");
+//            ResultSet resultSet = statement.executeQuery("select * from building_log");
+            ResultSet resultSet = statement.executeQuery("select e.user_id,b.log_entry_id, b.log_date, b.log_time, b.first_name, b.last_name from employee e, building_log b where e.user_id = b.user_id" );
 
 
             while (resultSet.next()) {
