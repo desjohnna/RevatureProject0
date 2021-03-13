@@ -10,7 +10,7 @@ import java.util.List;
 
 public class BuildingLogController {
 
-    private final BuildingLogService buildingLogService = new BuildingLogService();
+    private BuildingLogService buildingLogService = new BuildingLogService();
 
     public BuildingLogController() {
         super();

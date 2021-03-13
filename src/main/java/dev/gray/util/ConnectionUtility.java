@@ -8,22 +8,20 @@ public class ConnectionUtility {
 
     private static Connection connection;
 
-    public ConnectionUtility() {
+    private ConnectionUtility() {
         super();
     }
 
     public static Connection getConnection() {
-//        Creating a connection to my azure database
 //        Loading in the driver explicitly, not required but can prevent issues
-//        try {
-//            Class.forName("org.postgresql");
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+//        String connectionUrl = "jdbc:postgresql://gray-java-azure-training.postgres.database.azure.com:5432/postgres";
 
-        String connectionUrl = "jdbc:postgresql://gray-java-azure-training.postgres.database.azure.com:5432/postgres";
-
-//        String connectionUrl = System.getenv("connectionUrl");
+        String connectionUrl = System.getenv("connectionUrl");
         String username = System.getenv("username");
         String password = System.getenv("password");
 
@@ -34,4 +32,27 @@ public class ConnectionUtility {
         }
         return connection;
     }
+
+//    public static Connection getHardcodedConnection() throws SQLException {
+//
+//        try {
+//            Class.forName("postgres.database.azure.com");
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//        if(connection == null || connection.isClosed()) {
+//            String connectionUrl = "jdbc:postgresql://gray-java-azure-training.postgres.database.azure.com:5432/postgres";
+//            String username = "desjohnna@gray-java-azure-training";
+//            String password = "Deonna7745";
+//
+//            // create a connection
+//            connection = DriverManager.getConnection(connectionUrl, username, password);
+//        }
+//        return connection;
+//    }
+
+
+
+
 }

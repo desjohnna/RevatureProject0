@@ -14,7 +14,7 @@ public class BuildingMain {
 
 //      CREATING JAVALIN APP TO RUN ON LOCALHOST:7000 AND DISPLAY WELCOME
         Javalin app = Javalin.create().start(7000);
-        app.get("/", ctx -> ctx.result("Welcome to the Building Log"));
+//        app.get("/", ctx -> ctx.result("Welcome to the Building Log"));
 
 //      CREATING A CONTROLLER
         BuildingLogController buildingLogController = new BuildingLogController();
@@ -30,9 +30,7 @@ public class BuildingMain {
                         get(buildingLogController::handleFindLogByUserId);
                         delete(buildingLogController::handleDeleteLog);
                     });
-                    path("employee", () -> {
-                        post(employeeController::employeeLogin);
-                    });
+                    path("employee", () -> post(employeeController::employeeLogin));
                 }));
 
     }

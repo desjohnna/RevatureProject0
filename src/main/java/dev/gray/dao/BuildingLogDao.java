@@ -1,7 +1,6 @@
 package dev.gray.dao;
 
 import dev.gray.building_log_models.BuildingLog;
-
 import java.util.List;
 
 public interface BuildingLogDao {

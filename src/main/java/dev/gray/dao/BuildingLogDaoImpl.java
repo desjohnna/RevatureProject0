@@ -3,10 +3,7 @@ package dev.gray.dao;
 import dev.gray.building_log_models.BuildingLog;
 import dev.gray.util.ConnectionUtility;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +15,18 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
 
     @Override
     public List<BuildingLog> getMasterBuildingLog() {
+
+//        Creating a list to add all logs to
         List<BuildingLog> logs = new ArrayList<>();
 
         try (Connection connection = ConnectionUtility.getConnection()) {
-            Statement preparedStatement = connection.createStatement();
-            ResultSet resultSet = preparedStatement.executeQuery("select employee.user_id,building_log.log_entry_id, building_log.log_date, building_log.log_time, building_log.first_name, building_log.last_name\n" +
-                    "from employee\n" +
-                    "join building_log on building_log.user_id=employee.user_id;");
+
+//            Creating a statement object
+            Statement statement = connection.createStatement();
+
+//          Creating a ResultSet to hold all statements that come back from query
+            ResultSet resultSet = statement.executeQuery("select * from building_log");
+//            ResultSet resultSet = statement.executeQuery("select e.user_id,b.log_entry_id, b.log_date, b.log_time, b.first_name, b.last_name from employee join building_log b on b.user_id=e.user_id;");
 
 
             while (resultSet.next()) {
@@ -37,10 +39,10 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
 
                 BuildingLog buildingLog = new BuildingLog(logEntryId, userId, logDate, logTime, firstName, lastName);
                 logs.add(buildingLog);
-                return logs;
+
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+//            log here
         }
         return logs;
     }
