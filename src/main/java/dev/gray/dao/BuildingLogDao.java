@@ -7,6 +7,7 @@ public interface BuildingLogDao {
 
 
     BuildingLog addNewLog(BuildingLog newLog);
+//    get list of employee
 
     //Admin Only Methods
     List<BuildingLog> getMasterBuildingLog();
@@ -16,5 +17,10 @@ public interface BuildingLogDao {
     void deleteLog(int id);
 
     List<BuildingLog> findLogByUserId(int id);
+//    get employee by user id
+//    create new employee
+//    delete employee
+//    update employee
+
 
 }

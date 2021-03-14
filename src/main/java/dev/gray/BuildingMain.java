@@ -26,18 +26,20 @@ public class BuildingMain {
                 path("/log", () -> {
                     get(buildingLogController::handleGetAllLogs);
                     post(buildingLogController::handleAddNewLog);
-                    delete(buildingLogController::handleDeleteLog);
-
+                    path(":id", () -> {
+                        get(buildingLogController::handleGetLogsByEntryId);
+                        delete(buildingLogController::handleDeleteLog);
+                    });
                     path("employee", () -> {
+//                        get(buildingLogController::handleViewOnlyLogsFromId);
                         path(":id", () -> {
-                            get(buildingLogController::handleGetLogsByEntryId);
-//                            get(buildingLogController::handleGetLogByUserId);
+                            get(buildingLogController::handleGetLogByUserId);
                         });
 //                        get(buildingLogController::handleGetLogsByEntryId);
 
 
                     });
-                    path("employee", () -> post(employeeController::employeeLogin));
+                    path("login", () -> post(employeeController::employeeLogin));
                 }));
 
     }

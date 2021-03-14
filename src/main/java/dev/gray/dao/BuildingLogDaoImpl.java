@@ -48,7 +48,6 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
 //          Creating a ResultSet to hold all statements that come back from query
             ResultSet resultSet = statement.executeQuery("select * from building_master_log");
 
-
             while (resultSet.next()) {
                 int userId = resultSet.getInt("user_id");
                 int logEntryId = resultSet.getInt("log_entry_id");
@@ -67,7 +66,7 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
         return logs;
     }
 
-//  WORKING
+    //  WORKING
     @Override
     public BuildingLog getLogsByEntryId(int entryId) {
 
@@ -94,12 +93,33 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
 
     }
 
+    //      WORKING
     @Override
-    public void deleteLog(int id) {
-//will add delete later
+    public void deleteLog(int entryId) {
+        try (Connection connection = ConnectionUtility.getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from building_log where log_entry_id = ?");
+            preparedStatement.setInt(1, entryId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int userId = resultSet.getInt("user_id");
+                int logEntryId = resultSet.getInt("log_entry_id");
+                int logDate = resultSet.getInt("log_date");
+                int logTime = resultSet.getInt("log_time");
+                String firstName = resultSet.getString("first_name");
+                String lastName = resultSet.getString("last_name");
+                logger.info("Successfully deleted log matching Entry Id");
+                return;
+            }
+        } catch (SQLException e) {
+            logger.error("SQL Exception while trying to implement getLogsById");
+        }
+        logger.warn("No such matching Entry Id returning null");
+        return;
+
+
     }
 
-//    WORKING
+    //    WORKING
     @Override
     public List<BuildingLog> findLogByUserId(int id) {
         List<BuildingLog> logsById = new ArrayList<>();
