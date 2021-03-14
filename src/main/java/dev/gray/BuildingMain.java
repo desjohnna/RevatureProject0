@@ -26,9 +26,16 @@ public class BuildingMain {
                 path("/log", () -> {
                     get(buildingLogController::handleGetAllLogs);
                     post(buildingLogController::handleAddNewLog);
-                    path(":id", () -> {
-                        get(buildingLogController::handleFindLogByUserId);
-                        delete(buildingLogController::handleDeleteLog);
+                    delete(buildingLogController::handleDeleteLog);
+
+                    path("employee", () -> {
+                        path(":id", () -> {
+                            get(buildingLogController::handleGetLogsByEntryId);
+//                            get(buildingLogController::handleGetLogByUserId);
+                        });
+//                        get(buildingLogController::handleGetLogsByEntryId);
+
+
                     });
                     path("employee", () -> post(employeeController::employeeLogin));
                 }));

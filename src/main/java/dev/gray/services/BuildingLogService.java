@@ -22,9 +22,14 @@ public class BuildingLogService {
         buildingLogDao.deleteLog(logEntryId);
     }
 
-    public List<BuildingLog> findLogByUserId(int id) {
+    public BuildingLog getLogByEntryId(int id) {
+        return buildingLogDao.getLogsByEntryId(id);
+    }
+
+    public List<BuildingLog> getLogsByUserId(int id) {
         return buildingLogDao.findLogByUserId(id);
     }
+
 //     RETURNING A STREAM THAT FILTERS AND ADDS TO A LIST
 //            return (log.stream()
 ////     FILTERING THE BUILDING LOG OBJECTS FOR ID THAT MATCH THE PASSED IN ID

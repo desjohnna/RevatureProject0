@@ -11,7 +11,7 @@ public interface BuildingLogDao {
     //Admin Only Methods
     List<BuildingLog> getMasterBuildingLog();
 
-    List<BuildingLog> getLogsByEntryId(int id);
+    BuildingLog getLogsByEntryId(int id);
 
     void deleteLog(int id);
 

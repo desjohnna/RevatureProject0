@@ -39,14 +39,29 @@ public class BuildingLogController {
     }
 
 
-    public void handleFindLogByUserId(Context ctx) {
+    public void handleGetLogByUserId(Context ctx) {
 //      CREATING A VARIABLE TO HOLD THE PATH PARAMETER ID IN
         String idString = ctx.pathParam("id");
 //      PARSING ID FROM A STRING TO AN INT
         int idInput = Integer.parseInt(idString);
 //      CREATING A LIST TO PUT THE LOGS MATCHING THE USER ID IN
-        List<BuildingLog> userLog = buildingLogService.findLogByUserId(idInput);
+        List<BuildingLog> userLog = buildingLogService.getLogsByUserId(idInput);
 //      DISPLAYING THE LIST OF LOGS IN JSON FORMAT
         ctx.json(userLog);
+        ctx.status(200);
+    }
+
+    public void handleGetLogsByEntryId(Context ctx) {
+//      CREATING A VARIABLE TO HOLD THE PATH PARAMETER ID IN
+        String idString = ctx.pathParam("id");
+//      PARSING ID FROM A STRING TO AN INT
+        int idInput = Integer.parseInt(idString);
+//      CREATING A LOG OBJECT TO PUT THE LOG MATCHING THE ENTRY ID IN
+        BuildingLog userLog = buildingLogService.getLogByEntryId(idInput);
+//      DISPLAYING THE LIST OF LOGS IN JSON FORMAT
+        ctx.json(userLog);
+        ctx.status(200);
+
     }
 }
+
