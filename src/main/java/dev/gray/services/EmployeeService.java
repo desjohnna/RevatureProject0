@@ -1,18 +1,17 @@
 package dev.gray.services;
 
-import dev.gray.building_log_models.Employee;
+import dev.gray.dao.EmployeeDao;
+import dev.gray.dao.EmployeeDaoImpl;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class EmployeeService {
 
-//    private List<Employee> employeeList = new ArrayList<>();
+private EmployeeDao employeeDao = new EmployeeDaoImpl();
+
+public void login(int id, String password){
+    employeeDao.login(id,password);
+}
 
 
-    public EmployeeService() {
-        super();
-
-
-    }
 }
