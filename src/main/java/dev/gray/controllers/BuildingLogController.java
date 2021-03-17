@@ -38,7 +38,7 @@ public class BuildingLogController {
     }
 
 
-    public void handleGetLogByUserId(Context ctx) {
+    public void handleGetLogsByUserId(Context ctx) {
 //      CREATING A VARIABLE TO HOLD THE PATH PARAMETER ID IN
         String idString = ctx.pathParam("id");
 //      PARSING ID FROM A STRING TO AN INT

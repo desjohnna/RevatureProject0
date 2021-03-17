@@ -32,11 +32,16 @@ public class BuildingMain {
                     });
                     path("employee", () -> {
                         path(":id", () -> {
-                            get(buildingLogController::handleGetLogByUserId);
+                            get(buildingLogController::handleGetLogsByUserId);
+                            });
+
+                        path("user", () -> {
+                            path(":id", () -> {
+                                get(employeeController::getEmployeeByUserId);
+                            });
                             path("login", () -> post(employeeController::employeeLogin));
                         });
                     });
-
                 }));
 
     }

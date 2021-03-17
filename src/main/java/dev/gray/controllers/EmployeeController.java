@@ -1,10 +1,14 @@
 package dev.gray.controllers;
 
+import dev.gray.building_log_models.Employee;
+import dev.gray.services.EmployeeService;
 import io.javalin.http.Context;
 import io.javalin.http.UnauthorizedResponse;
 
 
 public class EmployeeController {
+
+    private EmployeeService employeeService = new EmployeeService();
 
     public void employeeLogin(Context ctx) {
 
@@ -15,14 +19,25 @@ public class EmployeeController {
         if (userIdInput != null && userIdInput.equals("username")) {
             if (passwordInput != null && passwordInput.equals("password")) {
 
-                    ctx.header("Authorization", "admin-auth-token");
-                    ctx.status(200);
-                    return;
+                ctx.header("Authorization", "admin-auth-token");
+                ctx.status(200);
+                return;
 
 
             }
             throw new UnauthorizedResponse("Please enter correct Username and Password");
         }
+    }
+
+    public void getEmployeeByUserId(Context ctx) {
+        String userIdString = ctx.pathParam("id");
+
+        int idInput = Integer.parseInt(userIdString);
+
+        Employee employee = employeeService.getEmployeeByUserId(idInput);
+        ctx.json(employee);
+        ctx.status(200);
+
     }
 
 

@@ -19,6 +19,11 @@ public class Employee implements Serializable {
         super();
     }
 
+    public Employee(Integer userId, String firstName, String lastName) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
     public Employee(Integer userId, String password, String firstName, String lastName, Boolean admin, Boolean loggedIn) {
         this.userId = userId;
         this.password = password;
@@ -27,6 +32,8 @@ public class Employee implements Serializable {
         this.admin = admin;
         this.loggedIn = loggedIn;
     }
+
+
 
     public Integer getUserId() {
         return userId;
@@ -109,4 +116,14 @@ public class Employee implements Serializable {
                 ", buildingLogSet=" + buildingLogSet +
                 '}';
     }
+
+
+//    @Override
+//    public String toString() {
+//        return "Employee{" +
+//                "userId=" + userId +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                '}';
+//    }
 }
