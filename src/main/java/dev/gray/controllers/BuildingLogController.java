@@ -16,8 +16,7 @@ public class BuildingLogController {
         super();
     }
 
-    public void handleGetAllLogs(Context ctx) {
-//        Add logic if statement logic for Admin access only, throw exception 403 FORBIDDEN
+    public void handleGetMasterBuildingLog(Context ctx) {
         ctx.json(buildingLogService.getMasterBuildingLog());
     }
 

@@ -61,7 +61,8 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
 
             }
         } catch (SQLException e) {
-//            log here
+//           //        Add logic if statement logic for Admin access only, throw exception 403 FORBIDDEN
+//            log
         }
         return logs;
     }
@@ -121,29 +122,31 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
 
     //    WORKING
     @Override
-    public List<BuildingLog> findLogByUserId(int id) {
+    public List<BuildingLog> getLogsByUserId(int id) {
+
         List<BuildingLog> logsById = new ArrayList<>();
+
         try (Connection connection = ConnectionUtility.getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from building_master_log where log_entry_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from building_master_log where user_id = ?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 int userId = resultSet.getInt("user_id");
                 int logEntryId = resultSet.getInt("log_entry_id");
                 int logDate = resultSet.getInt("log_date");
                 int logTime = resultSet.getInt("log_time");
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
+
                 BuildingLog buildingLog = new BuildingLog(logEntryId, userId, logDate, logTime, firstName, lastName);
                 logsById.add(buildingLog);
-                logger.info("Successfully returning all logs matching Id");
-                return logsById;
+
+
             }
         } catch (SQLException e) {
             logger.error("SQL Exception while trying to implement getLogsById");
         }
-        logger.warn("No such matching Id returning null");
+        logger.info("Successfully returning all logs matching Id");
         return logsById;
-
     }
 }

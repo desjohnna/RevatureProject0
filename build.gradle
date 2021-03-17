@@ -18,6 +18,9 @@ dependencies {
 
     // Adding in JDBC Dependency
     implementation 'org.postgresql:postgresql:42.2.18'
+
+    //mockito Dependency
+    testImplementation 'org.mockito:mockito-core:3.2.4'
 }
 
 test {

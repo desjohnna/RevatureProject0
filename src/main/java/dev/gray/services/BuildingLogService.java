@@ -27,7 +27,7 @@ public class BuildingLogService {
     }
 
     public List<BuildingLog> getLogsByUserId(int id) {
-        return buildingLogDao.findLogByUserId(id);
+        return buildingLogDao.getLogsByUserId(id);
     }
 
 //     RETURNING A STREAM THAT FILTERS AND ADDS TO A LIST

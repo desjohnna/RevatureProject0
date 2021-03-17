@@ -24,22 +24,19 @@ public class BuildingMain {
 //        TRYING OUT HANDLER GROUPS
         app.routes(() ->
                 path("/log", () -> {
-                    get(buildingLogController::handleGetAllLogs);
+                    get(buildingLogController::handleGetMasterBuildingLog);
                     post(buildingLogController::handleAddNewLog);
                     path(":id", () -> {
                         get(buildingLogController::handleGetLogsByEntryId);
                         delete(buildingLogController::handleDeleteLog);
                     });
                     path("employee", () -> {
-//                        get(buildingLogController::handleViewOnlyLogsFromId);
                         path(":id", () -> {
                             get(buildingLogController::handleGetLogByUserId);
+                            path("login", () -> post(employeeController::employeeLogin));
                         });
-//                        get(buildingLogController::handleGetLogsByEntryId);
-
-
                     });
-                    path("login", () -> post(employeeController::employeeLogin));
+
                 }));
 
     }

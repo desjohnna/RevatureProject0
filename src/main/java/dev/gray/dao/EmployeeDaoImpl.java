@@ -1,11 +1,13 @@
 package dev.gray.dao;
 
+import dev.gray.building_log_models.BuildingLog;
 import dev.gray.util.ConnectionUtility;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 
@@ -23,4 +25,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 //            log
         }
     }
+
+    public List<BuildingLog> ViewOnlyLogsFromId(int userId) {
+        return null;
+
+    }
+
+
+
 }
