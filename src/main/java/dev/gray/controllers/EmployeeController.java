@@ -13,26 +13,24 @@ public class EmployeeController {
 
     private EmployeeService employeeService = new EmployeeService();
 
-//  LoginService loginService = new LoginService();
 
-//    public void employeeLogin(Context ctx) {
-//
-//        String userIdInput = ctx.formParam("username");
-//        String passwordInput = ctx.formParam("password");
-////        String admin = ctx.queryParam("admin");
-//
-//        if (userIdInput != null && userIdInput.equals("username")) {
-//            if (passwordInput != null && passwordInput.equals("password")) {
-//
-//                ctx.header("Authorization", "admin-auth-token");
-//                ctx.status(200);
-//                return;
-//
-//
-//            }
-//            throw new UnauthorizedResponse("Please enter correct Username and Password");
-//        }
-//    }
+    public void login(Context ctx) {
+
+        String userIdInput = ctx.formParam("username");
+        String passwordInput = ctx.formParam("password");
+//        String admin = ctx.queryParam("admin");
+
+        if (userIdInput != null && userIdInput.equals("username")) {
+            if (passwordInput != null && passwordInput.equals("password")) {
+
+                ctx.header("Authorization", "admin-auth-token");
+                ctx.status(200);
+                return;
+
+            }
+            throw new UnauthorizedResponse("Please enter correct Username and Password");
+        }
+    }
 
     public void getEmployeeByUserId(Context ctx) {
         String userIdString = ctx.pathParam("id");

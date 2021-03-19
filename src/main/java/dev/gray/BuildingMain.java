@@ -45,7 +45,7 @@ public class BuildingMain {
         app.get("/user/:id", buildingLogController::handleGetLogsByUserId);
 
 //        Login Routes
-        app.post("/login", userController::login);
+        app.post("/login", employeeController::login);
 
 //        Employee Routes
         app.routes(() ->

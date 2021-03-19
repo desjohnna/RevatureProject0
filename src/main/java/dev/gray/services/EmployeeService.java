@@ -12,9 +12,9 @@ public class EmployeeService {
 
     private EmployeeDao employeeDao = new EmployeeDaoImpl();
 
-//    public void login(int id, String password) {
-//        employeeDao.login(id, password);
-//    }
+    public void login(int id, String password) {
+        employeeDao.login(id, password);
+    }
 
     public List<Employee> getMasterEmployeeList(){
         return employeeDao.getMasterEmployeeList();
