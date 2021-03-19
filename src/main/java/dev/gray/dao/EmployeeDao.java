@@ -2,12 +2,13 @@ package dev.gray.dao;
 
 import dev.gray.building_log_models.Employee;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface EmployeeDao {
 
-    public void login(int id, String password);
+    Employee getEmployeeByUserId(int userId);
 
-    public Employee getEmployeeByUserId(int userId);
-
-
+    public List<Employee> getMasterEmployeeList();
 
 }

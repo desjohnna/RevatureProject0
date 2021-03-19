@@ -30,12 +30,5 @@ public class BuildingLogService {
         return buildingLogDao.getLogsByUserId(id);
     }
 
-//     RETURNING A STREAM THAT FILTERS AND ADDS TO A LIST
-//            return (log.stream()
-////     FILTERING THE BUILDING LOG OBJECTS FOR ID THAT MATCH THE PASSED IN ID
-//                    .filter(log1 -> log1.getUserId() == id)
-////     COLLECTING THE LOGS THAT MATCH TO THE LIST CREATED
-//                    .collect(Collectors.toList()));
-
 }
 

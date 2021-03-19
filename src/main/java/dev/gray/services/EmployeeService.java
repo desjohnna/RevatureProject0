@@ -4,13 +4,20 @@ import dev.gray.building_log_models.Employee;
 import dev.gray.dao.EmployeeDao;
 import dev.gray.dao.EmployeeDaoImpl;
 
+import java.util.List;
+import java.util.Optional;
+
 
 public class EmployeeService {
 
     private EmployeeDao employeeDao = new EmployeeDaoImpl();
 
-    public void login(int id, String password) {
-        employeeDao.login(id, password);
+//    public void login(int id, String password) {
+//        employeeDao.login(id, password);
+//    }
+
+    public List<Employee> getMasterEmployeeList(){
+        return employeeDao.getMasterEmployeeList();
     }
 
     public Employee getEmployeeByUserId(int idInput) {

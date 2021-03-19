@@ -29,9 +29,7 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
             logger.error(e.getClass() + " " + e.getMessage());
         }
         return newLog;
-
     }
-
 
     //    WORKING
     @Override
@@ -45,7 +43,7 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
 //            Creating a statement object
             Statement statement = connection.createStatement();
 
-//          Creating a ResultSet to hold all statements that come back from query
+//          Creating a ResultSet to hold all results that come back from query
             ResultSet resultSet = statement.executeQuery("select * from building_master_log");
 
             while (resultSet.next()) {
@@ -89,7 +87,7 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
         } catch (SQLException e) {
             logger.error("SQL Exception while trying to implement getLogsById");
         }
-        logger.warn("No such matching Id returning null");
+        logger.warn("No such matching Entry Id returning null");
         return null;
 
     }
@@ -116,8 +114,6 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
         }
         logger.warn("No such matching Entry Id returning null");
         return;
-
-
     }
 
     //    WORKING
@@ -140,7 +136,6 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
 
                 BuildingLog buildingLog = new BuildingLog(logEntryId, userId, logDate, logTime, firstName, lastName);
                 logsById.add(buildingLog);
-
 
             }
         } catch (SQLException e) {

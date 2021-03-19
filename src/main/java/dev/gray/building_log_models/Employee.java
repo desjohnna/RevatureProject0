@@ -11,29 +11,25 @@ public class Employee implements Serializable {
     private String firstName;
     private String lastName;
     private Boolean admin;
-    private Boolean loggedIn;
+    private String email;
 
-    private Set<BuildingLog> buildingLogSet;
-
-    public Employee(){
+    public Employee() {
         super();
     }
 
-    public Employee(Integer userId, String firstName, String lastName) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    public Employee(Integer userId, String password, String firstName, String lastName, Boolean admin, Boolean loggedIn) {
+
+    public Employee(Integer userId, String password, String email) {
         this.userId = userId;
         this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.admin = admin;
-        this.loggedIn = loggedIn;
+        this.email = email;
     }
 
-
+    public Employee(Integer userId, String firstName, String lastName, String email) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -67,13 +63,6 @@ public class Employee implements Serializable {
         this.lastName = lastName;
     }
 
-    public Set<BuildingLog> getBuildingLogSet() {
-        return buildingLogSet;
-    }
-
-    public void setBuildingLog(Set<BuildingLog> buildingLog) {
-        this.buildingLogSet = buildingLog;
-    }
 
     public Boolean getAdmin() {
         return admin;
@@ -83,12 +72,12 @@ public class Employee implements Serializable {
         this.admin = admin;
     }
 
-    public Boolean getLoggedIn() {
-        return loggedIn;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLoggedIn(Boolean loggedIn) {
-        this.loggedIn = loggedIn;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -96,12 +85,12 @@ public class Employee implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return userId.equals(employee.userId) && password.equals(employee.password) && firstName.equals(employee.firstName) && lastName.equals(employee.lastName) && admin.equals(employee.admin) && loggedIn.equals(employee.loggedIn) && Objects.equals(buildingLogSet, employee.buildingLogSet);
+        return userId.equals(employee.userId) && password.equals(employee.password) && firstName.equals(employee.firstName) && lastName.equals(employee.lastName) && admin.equals(employee.admin) && email.equals(employee.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, password, firstName, lastName, admin, loggedIn, buildingLogSet);
+        return Objects.hash(userId, password, firstName, lastName, admin, email);
     }
 
     @Override
@@ -112,18 +101,10 @@ public class Employee implements Serializable {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", admin=" + admin +
-                ", loggedIn=" + loggedIn +
-                ", buildingLogSet=" + buildingLogSet +
+                ", email=" + email +
                 '}';
     }
 
 
-//    @Override
-//    public String toString() {
-//        return "Employee{" +
-//                "userId=" + userId +
-//                ", firstName='" + firstName + '\'' +
-//                ", lastName='" + lastName + '\'' +
-//                '}';
-//    }
+
 }
