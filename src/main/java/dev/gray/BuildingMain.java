@@ -39,10 +39,10 @@ public class BuildingMain {
                     path(":id", () -> {
                         get(buildingLogController::handleGetLogsByEntryId);
                         delete(buildingLogController::handleDeleteLog);
-                        put(buildingLogController::handleGetLogsByUserId);
                     });
-
                 }));
+
+        app.get("/user/:id", buildingLogController::handleGetLogsByUserId);
 
 //        Login Routes
         app.post("/login", userController::login);
