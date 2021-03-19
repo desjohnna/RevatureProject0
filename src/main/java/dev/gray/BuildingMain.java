@@ -51,9 +51,7 @@ public class BuildingMain {
         app.routes(() ->
                 path("employee", () -> {
                     get(employeeController::getMasterEmployeeList);
-                    path(":id", () -> {
-                        get(employeeController::getEmployeeByUserId);
-                    });
+                    path(":id", () -> get(employeeController::getEmployeeByUserId));
                 }));
     }
 }

@@ -1,6 +1,6 @@
 package dev.gray.dao;
 
-import dev.gray.building_log_models.BuildingLog;
+
 import dev.gray.building_log_models.Employee;
 import dev.gray.util.ConnectionUtility;
 import org.slf4j.Logger;
@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 

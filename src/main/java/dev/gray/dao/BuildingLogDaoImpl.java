@@ -100,12 +100,12 @@ public class BuildingLogDaoImpl implements BuildingLogDao {
             preparedStatement.setInt(1, entryId);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                int userId = resultSet.getInt("user_id");
-                int logEntryId = resultSet.getInt("log_entry_id");
-                int logDate = resultSet.getInt("log_date");
-                int logTime = resultSet.getInt("log_time");
-                String firstName = resultSet.getString("first_name");
-                String lastName = resultSet.getString("last_name");
+//                int userId = resultSet.getInt("user_id");
+//                int logEntryId = resultSet.getInt("log_entry_id");
+//                int logDate = resultSet.getInt("log_date");
+//                int logTime = resultSet.getInt("log_time");
+//                String firstName = resultSet.getString("first_name");
+//                String lastName = resultSet.getString("last_name");
                 logger.info("Successfully deleted log matching Entry Id");
                 return;
             }
